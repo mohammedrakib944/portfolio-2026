@@ -4,7 +4,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ExternalLink, Zap } from "lucide-react";
 import React, { useEffect, useRef } from "react";
-import { PROJECTS } from "./constants";
+import { PROJECTS } from "@/lib/home/constants";
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);

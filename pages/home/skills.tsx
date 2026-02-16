@@ -3,7 +3,7 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import React, { useEffect, useRef } from "react";
-import { SKILLS } from "./constants";
+import { SKILLS } from "@/lib/home/constants";
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
