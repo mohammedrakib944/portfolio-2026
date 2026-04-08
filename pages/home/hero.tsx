@@ -5,6 +5,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ChevronDown } from "lucide-react";
 import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
+import MyImage from "@/assets/me.webp";
+import Image from "next/image";
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -107,6 +109,8 @@ const Hero: React.FC = () => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
+  const innerImageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -147,6 +151,59 @@ const Hero: React.FC = () => {
         y: -100,
         opacity: 0,
       });
+
+      // Floating animation for image
+      if (innerImageRef.current) {
+        gsap.to(innerImageRef.current, {
+          y: -15,
+          duration: 2,
+          ease: "sine.inOut",
+          yoyo: true,
+          repeat: -1,
+        });
+      }
+
+      // Mouse dodging logic
+      const handleMouseMove = (e: MouseEvent) => {
+        if (!imageRef.current) return;
+
+        const rect = imageRef.current.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        const distanceX = e.clientX - centerX;
+        const distanceY = e.clientY - centerY;
+        const distance = Math.sqrt(distanceX ** 2 + distanceY ** 2);
+
+        const radius = 250; // Distance at which image starts moving
+
+        if (distance < radius) {
+          const angle = Math.atan2(distanceY, distanceX);
+          const force = (radius - distance) / radius;
+          const movement = force * 100; // Max displacement
+
+          gsap.to(imageRef.current, {
+            x: -Math.cos(angle) * movement,
+            y: -Math.sin(angle) * movement - 7.5, // Subtracting half of float height to keep it roughly centered
+            duration: 0.4,
+            ease: "power2.out",
+            overwrite: "auto",
+          });
+        } else {
+          gsap.to(imageRef.current, {
+            x: 0,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out",
+            overwrite: "auto",
+          });
+        }
+      };
+
+      window.addEventListener("mousemove", handleMouseMove);
+      return () => {
+        window.removeEventListener("mousemove", handleMouseMove);
+      };
     }, sectionRef);
 
     return () => ctx.revert();
@@ -161,8 +218,21 @@ const Hero: React.FC = () => {
 
       <div
         ref={contentRef}
-        className="relative z-10 max-w-4xl mx-auto px-6 text-center"
+        className="relative z-10 max-w-4xl mx-auto px-6 text-center flex flex-col items-center"
       >
+        <div ref={imageRef} className="relative mx-auto inline-block mb-10">
+          <div ref={innerImageRef}>
+            <Image
+              src={MyImage}
+              className="aspect-square rounded-full object-cover shadow-2xl ring-4 ring-white/10"
+              alt="My Image"
+              width={200}
+              height={200}
+              priority
+            />
+          </div>
+        </div>
+
         <span
           ref={badgeRef}
           className="inline-block py-1 px-3 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-400 text-sm font-medium mb-6"
