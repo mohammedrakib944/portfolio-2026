@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ExternalLink, Zap } from "lucide-react";
 import React, { useEffect, useRef } from "react";
 import { PROJECTS } from "@/lib/home/constants";
+import Link from "next/link";
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -76,12 +77,13 @@ const Projects: React.FC = () => {
                     {project.title}
                   </h3>
                   {project.link && (
-                    <a
+                    <Link
                       href={project.link}
-                      className="text-zinc-500 hover:text-white transition-colors"
+                      target="_blank"
+                      className="flex  gap-4 text-green-500 hover:text-white transition-colors"
                     >
-                      <ExternalLink className="w-5 h-5" />
-                    </a>
+                      Live demo <ExternalLink className="w-5 h-5" />
+                    </Link>
                   )}
                 </div>
 

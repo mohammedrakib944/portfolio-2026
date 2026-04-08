@@ -66,6 +66,15 @@ export const EXPERIENCES: Experience[] = [
 
 export const PROJECTS: Project[] = [
   {
+    id: "proj-5",
+    title: "Cloth Store",
+    description:
+      "A modern cloth store platform. Features include product management, order management, user management, with admin panel.",
+    tags: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Nest.js"],
+    metrics: "Full stack",
+    link: "https://maana-wear.com",
+  },
+  {
     id: "proj-1",
     title: "Financfy",
     description:

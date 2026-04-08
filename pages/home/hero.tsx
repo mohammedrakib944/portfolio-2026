@@ -221,15 +221,117 @@ const Hero: React.FC = () => {
         className="relative z-10 max-w-4xl mx-auto px-6 text-center flex flex-col items-center"
       >
         <div ref={imageRef} className="relative mx-auto inline-block mb-10">
-          <div ref={innerImageRef}>
-            <Image
-              src={MyImage}
-              className="aspect-square rounded-full object-cover shadow-2xl ring-4 ring-white/10"
-              alt="My Image"
-              width={200}
-              height={200}
-              priority
+          <div
+            ref={innerImageRef}
+            className="relative flex items-center justify-center w-[150px] h-[150px]"
+          >
+            <style>{`
+    @keyframes spinCW {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    @keyframes spinCCW {
+      from { transform: rotate(360deg); }
+      to   { transform: rotate(0deg); }
+    }
+    .wave-cw {
+      animation: spinCW 8s linear infinite;
+      transform-origin: center;
+    }
+    .wave-ccw {
+      animation: spinCCW 12s linear infinite;
+      transform-origin: center;
+    }
+  `}</style>
+
+            {/* Primary wave ring */}
+            <svg
+              className="wave-cw absolute inset-0 w-full h-full"
+              viewBox="0 0 220 220"
+              fill="none"
+            >
+              <defs>
+                <linearGradient id="wg1" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
+                  <stop offset="50%" stopColor="#ffffff" stopOpacity="0.4" />
+                  <stop offset="100%" stopColor="#ffffff" stopOpacity="1" />
+                </linearGradient>
+              </defs>
+              <path
+                d="M110 8
+         C135 8, 165 22, 182 45
+         C198 67, 214 80, 213 105
+         C212 130, 198 148, 210 168
+         C220 186, 214 205, 194 213
+         C173 221, 150 218, 128 213
+         C108 208, 95 220, 72 215
+         C50 210, 26 203, 14 183
+         C2 163, 8 140, 7 118
+         C6 96, 2 74, 14 54
+         C27 33, 52 14, 78 9
+         C92 6, 100 8, 110 8Z"
+                stroke="url(#wg1)"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+
+            {/* Secondary counter wave ring */}
+            <svg
+              className="wave-ccw absolute inset-0 w-full h-full"
+              viewBox="0 0 220 220"
+              fill="none"
+            >
+              <defs>
+                <linearGradient id="wg2" x1="100%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#ffffff" stopOpacity="0.6" />
+                  <stop offset="50%" stopColor="#ffffff" stopOpacity="0.1" />
+                  <stop offset="100%" stopColor="#ffffff" stopOpacity="0.6" />
+                </linearGradient>
+              </defs>
+              <path
+                d="M110 14
+         C130 12, 158 20, 175 40
+         C192 60, 208 76, 207 100
+         C206 124, 194 144, 205 165
+         C215 183, 210 202, 191 211
+         C171 220, 148 216, 127 211
+         C107 207, 94 218, 72 213
+         C51 208, 28 200, 17 181
+         C5 162, 11 139, 10 118
+         C9 97, 5 76, 18 57
+         C31 37, 55 19, 80 13
+         C93 10, 102 15, 110 14Z"
+                stroke="url(#wg2)"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              />
+            </svg>
+
+            {/* Static base ring */}
+            <div
+              className="absolute rounded-full"
+              style={{
+                inset: "10px",
+                border: "1px solid rgba(255,255,255,0.08)",
+              }}
             />
+
+            {/* Image */}
+            <div
+              className="absolute rounded-full overflow-hidden"
+              style={{ inset: "16px" }}
+            >
+              <Image
+                src={MyImage}
+                className="w-full h-full object-cover"
+                alt="My Image"
+                width={188}
+                height={188}
+                priority
+              />
+            </div>
           </div>
         </div>
 
