@@ -77,7 +77,8 @@ const Navigation: React.FC = () => {
             </a>
           ))}
           <a
-            href="#"
+            href="https://docs.google.com/document/d/1uutw6v4fr4H4Vc4UlmPLGiHjCme8j_ucRObgRJbbE3o/edit?usp=sharing"
+            target="_blank"
             className="px-4 py-2 bg-white text-black text-sm font-bold rounded-full hover:bg-zinc-200 transition-colors"
           >
             Resume

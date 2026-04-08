@@ -337,8 +337,9 @@ const Hero: React.FC = () => {
 
         <span
           ref={badgeRef}
-          className="inline-block py-1 px-3 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-400 text-sm font-medium mb-6"
+          className="inline-flex items-center gap-2 py-1 px-3 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-400 text-sm font-medium mb-6"
         >
+          <span className="size-2 animate-pulse bg-green-400 shadow shadow-green-400 rounded-full"></span>
           Available for opportunities
         </span>
         <h1
