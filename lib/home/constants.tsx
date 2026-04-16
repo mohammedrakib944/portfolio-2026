@@ -75,6 +75,15 @@ export const PROJECTS: Project[] = [
     link: "https://maana-wear.com",
   },
   {
+    id: "proj-6",
+    title: "Design Agency",
+    description:
+      "Animated design agency website. Features include product management, order management, user management, with admin panel.",
+    tags: ["Next.js", "TypeScript", "GSAP", "Tailwind"],
+    metrics: "Animation",
+    link: "https://agency.vivasoftltd.dev",
+  },
+  {
     id: "proj-1",
     title: "Financfy",
     description:

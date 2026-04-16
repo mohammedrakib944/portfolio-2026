@@ -92,7 +92,7 @@ const Projects: React.FC = () => {
                 </p>
 
                 {project.metrics && (
-                  <div className="mb-6 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-800/50 border border-zinc-700/50 text-xs font-medium text-zinc-300">
+                  <div className="w-fit mb-6 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-800/50 border border-zinc-700/50 text-xs font-medium text-zinc-300">
                     <Zap className="w-3 h-3 text-yellow-500" />
                     {project.metrics}
                   </div>
