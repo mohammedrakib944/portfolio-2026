@@ -51,14 +51,14 @@ const Contact: React.FC = () => {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
             <a
-              href="mailto:rakib@example.com"
+              href="mailto:rakibuzzaman.contact@gmail.com"
               className="flex items-center gap-3 px-8 py-4 bg-zinc-900 border border-zinc-800 rounded-full text-white hover:bg-zinc-800 hover:border-zinc-700 transition-all w-full sm:w-auto justify-center group"
             >
               <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />
-              <span>rakib@example.com</span>
+              <span>rakibuzzaman.contact@gmail.com</span>
             </a>
             <a
-              href="#"
+              href="https://github.com/mohammedrakib944"
               className="flex items-center gap-3 px-8 py-4 bg-zinc-900 border border-zinc-800 rounded-full text-white hover:bg-zinc-800 hover:border-zinc-700 transition-all w-full sm:w-auto justify-center group"
             >
               <Github className="w-5 h-5 group-hover:scale-110 transition-transform" />
